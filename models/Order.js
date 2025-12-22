@@ -52,15 +52,31 @@ const orderSchema = new mongoose.Schema({
     enum: ['pending', 'paid', 'failed', 'refunded'],
     default: 'pending'
   },
+  paymentId: {
+    type: String
+  },
   paymentMethod: {
     type: String,
-    enum: ['credit_card', 'paypal', 'stripe', 'bank_transfer', 'cash'],
-    default: 'credit_card'
+    enum: ['credit_card', 'paypal', 'stripe', 'bank_transfer', 'cash', 'razorpay'],
+    default: 'razorpay'
   },
   orderStatus: {
     type: String,
     enum: ['processing', 'confirmed', 'shipped', 'delivered', 'cancelled'],
     default: 'processing'
+  },
+  shippingDetails: {
+    orderId: {
+      type: String
+    },
+    shipmentId: {
+      type: String
+    }
+  },
+  shippingStatus: {
+    type: String,
+    enum: ['pending', 'created', 'failed'],
+    default: 'pending'
   },
   trackingNumber: {
     type: String,

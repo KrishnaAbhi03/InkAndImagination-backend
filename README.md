@@ -130,6 +130,15 @@ EMAIL_PASSWORD=your-app-specific-password
 EMAIL_FROM=InkAndImagination <noreply@inkandimagination.com>
 ADMIN_EMAIL=neil@inkandimagination.com
 
+# Payment (Razorpay)
+RAZORPAY_KEY_ID=your_razorpay_key_id
+RAZORPAY_KEY_SECRET=your_razorpay_key_secret
+
+# Shipping (Shiprocket)
+SHIPROCKET_EMAIL=your_shiprocket_email
+SHIPROCKET_PASSWORD=your_shiprocket_password
+SHIPROCKET_PICKUP_LOCATION=Primary
+
 # Frontend
 FRONTEND_URL=https://krishnaabhi03.github.io
 ```
@@ -191,6 +200,12 @@ POST   /api/orders                # Create new order
 #### Contact
 ```
 POST   /api/contact               # Submit contact form
+```
+
+#### Payment
+```
+POST   /api/payment/create-order  # Create a Razorpay order
+POST   /api/payment/verify-payment # Verify a Razorpay payment and create order
 ```
 
 ### Protected Endpoints (Require JWT Token)

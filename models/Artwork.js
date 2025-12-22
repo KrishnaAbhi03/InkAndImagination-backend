@@ -39,9 +39,13 @@ const artworkSchema = new mongoose.Schema({
     default: 1
   },
   dimensions: {
-    width: { type: Number },
+    length: { type: Number },
+    breadth: { type: Number },
     height: { type: Number },
-    unit: { type: String, enum: ['inches', 'cm'], default: 'inches' }
+    unit: { type: String, enum: ['inches', 'cm'], default: 'cm' }
+  },
+  weight: {
+    type: Number, // in grams
   },
   medium: {
     type: String,
