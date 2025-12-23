@@ -7,6 +7,26 @@ const compression = require('compression');
 const connectDB = require('./config/database');
 const errorHandler = require('./middleware/errorHandler');
 
+import express from "express";
+import fetch from "node-fetch";
+import cors from "cors";
+
+const app = express();
+app.use(cors());
+
+const ACCESS_TOKEN = "YOUR_INSTAGRAM_ACCESS_TOKEN";
+
+app.get("/instagram-feed", async (req, res) => {
+  const url = `https://graph.instagram.com/me/media?fields=id,media_type,media_url,permalink&access_token=${ACCESS_TOKEN}`;
+  
+  const response = await fetch(url);
+  const data = await response.json();
+  res.json(data.data);
+});
+
+app.listen(5000, () => console.log("Server running on port 5000"));
+
+
 // Load environment variables
 dotenv.config();
 
