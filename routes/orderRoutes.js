@@ -9,9 +9,6 @@ const {
 const { protect } = require('../middleware/auth');
 const { orderValidation, validate } = require('../middleware/validator');
 
-// Public route - create order
-router.post('/', orderValidation, validate, createOrder);
-
 // Protected routes (admin only)
 router.get('/', protect, getAllOrders);
 router.get('/:id', protect, getOrderById);
